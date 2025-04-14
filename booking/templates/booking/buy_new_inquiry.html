@@ -1,0 +1,8 @@
+<!-- booking/templates/booking/buy_new_inquiry.html -->
+
+<h2>Inquire About a New Device</h2>
+<form method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Submit</button>
+</form>

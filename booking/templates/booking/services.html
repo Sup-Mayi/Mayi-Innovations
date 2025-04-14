@@ -2,13 +2,83 @@
 <html>
 <head>
     <title>Services - QuickFx</title>
+    <style>
+        #buy-new-form {
+            display: none;
+            margin-top: 20px;
+        }
+        .form-field {
+            margin-bottom: 10px;
+        }
+        input, select {
+            padding: 6px;
+            width: 300px;
+        }
+    </style>
+    <script>
+        function redirectToBooking() {
+            window.location.href = "{% url 'request_service' %}";
+        }
+
+        function showBuyNewForm() {
+            document.getElementById("buy-new-form").style.display = "block";
+        }
+
+        function generateTicketId() {
+            const ticketId = 'QFB-' + Math.floor(1000 + Math.random() * 9000);
+            document.getElementById('ticket-id').innerText = ticketId;
+            document.getElementById('ticket-id-input').value = ticketId;
+        }
+    </script>
 </head>
 <body>
-    <h1>Our Services</h1>
-    <ul>
-        <li>TV Repair</li>
-        <li>Laptop Repair</li>
-        <li>Desktop Repair</li>
-    </ul>
+    <h2><strong>Book a Service or Buy a New Device</strong></h2>
+
+    <form method="post" action="{% url 'buy_new_inquiry' %}">
+        {% csrf_token %}
+        <label>
+            <input type="radio" name="service_option" value="repair" onclick="redirectToBooking()">
+            Service
+        </label><br>
+        <label>
+            <input type="radio" name="service_option" value="buy_new" onclick="showBuyNewForm(); generateTicketId();">
+            Buy New / Exchange
+        </label>
+
+        <div id="buy-new-form">
+            <h3>Inquire About a New Device</h3>
+
+            <div class="form-field">
+                <label for="device_type">Select a Device to Buy:</label><br>
+                <select name="device_type" id="device_type" required>
+                    <option value="">-- Select --</option>
+                    <option value="Laptop/Desktop">Laptop/Desktop</option>
+                    <option value="TV">TV</option>
+                    <option value="Mobile">Mobile</option>
+                    <option value="CCTV">CCTV</option>
+
+                </select>
+            </div>
+
+            <div class="form-field">
+                <input type="text" name="name" placeholder="Your Name" required />
+            </div>
+            <div class="form-field">
+                <input type="text" name="phone" placeholder="10-digit number" pattern="\d{10}" required />
+            </div>
+            <div class="form-field">
+                <input type="email" name="email" placeholder="Your Email" required />
+            </div>
+
+            <div class="form-field">
+                Ticket ID: <strong><span id="ticket-id"></span></strong>
+                <input type="hidden" name="ticket_id" id="ticket-id-input">
+            </div>
+
+            <div class="form-field">
+                <button type="submit">Submit</button>
+            </div>
+        </div>
+    </form>
 </body>
 </html>
