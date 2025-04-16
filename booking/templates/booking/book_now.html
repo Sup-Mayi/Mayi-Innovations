@@ -8,6 +8,8 @@
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
+        <p><strong>Book a Service (For visit only 99/-)</strong></p>
+
         <button type="submit">submit</button>
     </form>
 </body>

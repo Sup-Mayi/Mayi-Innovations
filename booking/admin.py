@@ -6,12 +6,14 @@ from .models import ContactMessage
 from .models import BuyNewInquiry
 
 class ServiceRequestAdmin(admin.ModelAdmin):
-    list_display = ('ticket_id', 'name', 'email','phone', 'device_type', 'state', 'city', 'issue_description')
+    list_display = ('ticket_id', 'name', 'email','phone', 'device_type', 'state', 'city', 'issue_description','status')
     search_fields = ('ticket_id', 'name', 'email','phone')
+    fields = ('ticket_id', 'name', 'email', 'phone', 'device_type', 'issue_description', 'state', 'city', 'status')
+    readonly_fields = ('ticket_id',)
 
 admin.site.register(ServiceRequest, ServiceRequestAdmin)
 
-
+ 
 
 class ContactMessageAdmin(admin.ModelAdmin):
     list_display = ('name', 'email', 'phone', 'message')
@@ -20,9 +22,10 @@ class ContactMessageAdmin(admin.ModelAdmin):
 admin.site.register(ContactMessage, ContactMessageAdmin)
 
 class BuyNewInquiryAdmin(admin.ModelAdmin):
-    list_display = ('ticket_id', 'name', 'email', 'phone', 'device_type')
+    list_display = ('ticket_id', 'name', 'email', 'phone', 'device_type','status')
     search_fields = ('ticket_id', 'name', 'email', 'phone')
-
+    fields = ('ticket_id', 'name', 'email', 'phone', 'device_type', 'appointment_date', 'price', 'status')
+    readonly_fields = ('ticket_id',)
 admin.site.register(BuyNewInquiry, BuyNewInquiryAdmin)
 
 
