@@ -1,18 +1,85 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Services - QuickFx</title>
+    <meta charset="UTF-8">
+    <title>Services - QuickFix</title>
     <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background-color: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: #007bff;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-field {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
         #buy-new-form {
             display: none;
-            margin-top: 20px;
         }
-        .form-field {
-            margin-bottom: 10px;
+
+        .ticket-id {
+            font-weight: bold;
+            color: #007bff;
         }
-        input, select {
-            padding: 6px;
-            width: 300px;
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+                margin: 20px;
+            }
+            h2 {
+                font-size: 1.6rem;
+            }
         }
     </style>
     <script>
@@ -32,68 +99,78 @@
     </script>
 </head>
 <body>
-    <h2><strong>Book a Service or Buy a New Device</strong></h2>
 
-    <form method="post" action="{% url 'buy_new_inquiry' %}">
+    <div class="container">
+        <h2><strong>Book a Service or Buy a New Device</strong></h2>
 
-        {% csrf_token %}
-        <label>
-            <input type="radio" name="service_option" value="repair" onclick="redirectToBooking()">
-            Service
-        </label><br>
-        <label>
-            <input type="radio" name="service_option" value="buy_new" onclick="showBuyNewForm(); generateTicketId();">
-            Buy New / Exchange
-        </label>
-        <p><strong>Book a Service (For visit only 99/-)</strong></p>
-
-          <div id="buy-new-form">
-            <h3>Inquire About a New Device</h3>
-
+        <form method="post" action="{% url 'buy_new_inquiry' %}">
+            {% csrf_token %}
             <div class="form-field">
-                <label for="device_type">Select a Device to Buy:</label><br>
-                <select name="device_type" id="device_type" required>
-                    <option value="">-- Select --</option>
-                    <option value="Laptop/Desktop">Laptop/Desktop</option>
-                    <option value="TV">TV</option>
-                    <option value="Mobile">Mobile</option>
-                    <option value="CCTV">CCTV</option>
-
-                </select>
+                <label>
+                    <input type="radio" name="service_option" value="repair" onclick="redirectToBooking()">
+                    Service
+                </label><br>
+                <label>
+                    <input type="radio" name="service_option" value="buy_new" onclick="showBuyNewForm(); generateTicketId();">
+                    Buy New / Exchange
+                </label>
             </div>
 
-            <div class="form-field">
-                <input type="text" name="name" placeholder="Your Name" required />
+            <p><strong>Book a Service (For visit only ₹99/-)</strong></p>
+
+            <div id="buy-new-form">
+                <h3>Inquire About a New Device</h3>
+
+                <div class="form-field">
+                    <label for="device_type">Select a Device to Buy:</label>
+                    <select name="device_type" id="device_type" required>
+                        <option value="">-- Select --</option>
+                        <option value="Laptop/Desktop">Laptop/Desktop</option>
+                        <option value="TV">TV</option>
+                        <option value="Mobile">Mobile</option>
+                        <option value="CCTV">CCTV</option>
+                    </select>
+                </div>
+
+                <div class="form-field">
+                    <input type="text" name="name" placeholder="Your Name" required />
+                </div>
+
+                <div class="form-field">
+                    <input type="text" name="phone" placeholder="10-digit number" pattern="\d{10}" required />
+                </div>
+
+                <div class="form-field">
+                    <input type="email" name="email" placeholder="Your Email" required />
+                </div>
+
+                <div class="form-field">
+                    <input type="text" name="state" placeholder="Your State" required />
+                </div>
+
+                <div class="form-field">
+                    <input type="text" name="city" placeholder="Your City" required />
+                </div>
+
+                <!-- New Field: Date -->
+                <div class="form-field">
+                    <label for="appointment_date">Preferred Date & Time:</label><br>
+                    <input type="datetime-local" name="appointment_date" id="appointment_date" required />
+                </div>
+
+                <p><strong>Book a Service (For visit only ₹99/-)</strong></p>
+
+                <div class="form-field">
+                    Ticket ID: <span class="ticket-id" id="ticket-id"></span>
+                    <input type="hidden" name="ticket_id" id="ticket-id-input">
+                </div>
+
+                <div class="form-field">
+                    <button type="submit">Submit</button>
+                </div>
             </div>
-            <div class="form-field">
-                <input type="text" name="phone" placeholder="10-digit number" pattern="\d{10}" required />
-            </div>
-            <div class="form-field">
-                <input type="email" name="email" placeholder="Your Email" required />
-            </div>   
-             <!-- ✅ New Field: Date -->
-        <div class="form-field">
-        <label for="appointment_date">Preferred Date & Time:</label><br>
-        <input type="datetime-local" name="appointment_date" id="appointment_date" required />
-    </div>    
+        </form>
+    </div>
 
-    <!-- ✅ New Field: Price -->
-    <div class="form-field">
-        <label for="price">Price (₹):</label><br>
-        <input type="text" name="price" id="price" value="99" readonly />
-    </div>  
-
-     <p><strong>Book a Service (For visit only 99/-)</strong></p>
-            <div class="form-field">
-                Ticket ID: <strong><span id="ticket-id"></span></strong>
-                  <input type="hidden" name="ticket_id" id="ticket-id-input">
-            </div>  
-
-            <div class="form-field">
-                <button type="submit">Submit</button>
-
-            </div>
-        </div>
-    </form>  
-</body> 
+</body>
 </html>

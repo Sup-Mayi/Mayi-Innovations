@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gallery</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+      padding: 40px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #007bff;
+      margin-bottom: 40px;
+      font-size: 2.5rem;
+    }
+
+    .gallery-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .gallery-image {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .gallery-image:hover {
+      transform: scale(1.03);
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Our Gallery</h1>
+
+  <div class="gallery-container">
+    <img src="{% static 'images/computer-lab.jpeg' %}" alt="Computer Lab 1" class="gallery-image">
+    <img src="{% static 'images/computer-lab2.jpeg' %}" alt="Computer Lab 2" class="gallery-image">
+  </div>
+
+</body>
+</html>

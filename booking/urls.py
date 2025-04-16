@@ -11,5 +11,11 @@ urlpatterns = [
     path('contact-success/', views.contact_success, name='contact_success'),
     path('book-now/', views.request_service, name='request_service'),
     path('buy-new/', views.buy_new_inquiry, name='buy_new_inquiry'),
+    path('import/', views.import_excel_data, name='import_excel_data'),
+    path('export-service-requests/', views.export_service_requests_to_excel, name='export_service_requests'),
+    path('export-data/', views.export_data, name='export_data'),
+    path('gallery/', views.gallery, name='gallery'),
+
+   
 
 ]

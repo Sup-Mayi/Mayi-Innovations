@@ -81,8 +81,20 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
-STATIC_URL = 'static/'
+# settings.py
+
+import os
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Other static settings
+STATIC_URL = '/static/'
+
+# Add the path to the 'booking/static' folder
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'booking/static'),
+]
+
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

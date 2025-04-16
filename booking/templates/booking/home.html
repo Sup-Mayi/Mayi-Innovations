@@ -1,20 +1,127 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>QuickFix - Home</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.2rem;
+            letter-spacing: 1px;
+        }
+
+        nav {
+            margin-top: 10px;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #d1ecff;
+        }
+
+        /* Sections */
+        section {
+            padding: 60px 20px;
+            max-width: 900px;
+            margin: auto;
+            background-color: white;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #007bff;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        strong {
+            color: #333;
+        }
+
+        /* Call to Action Button */
+        .cta-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            background-color: #218838;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 1.6rem;
+            }
+
+            nav a {
+                display: block;
+                margin: 10px 0;
+            }
+
+            section {
+                padding: 40px 15px;
+            }
+        }
+    </style>
 </head>
 <body>
 
     <!-- Header -->
     <header>
-        <h1>QUICKFIX</h1>
+        <h1>QuickFix</h1>
         <nav>
             <a href="#home">Home</a>
-            <a href="{% url 'about' %}">About us</a>
+            <a href="{% url 'about' %}">About Us</a>
+            <a href="{% url 'gallery' %}">gallery</a>
             <a href="{% url 'services' %}">Services</a>
             <a href="{% url 'book_now' %}">Book Now</a>
-            <a href="{% url 'contact' %}">Contact us</a>
-            
+            <a href="{% url 'contact' %}">Contact Us</a>
         </nav>
     </header>
 
@@ -22,37 +129,39 @@
     <section id="home">
         <h2>Fast Repairs & Trusted Devices</h2>
         <p>Your one-stop solution for device repairs and new gadgets.</p>
-        <p>A Quick service for 30 Minutes</p>
+        <p><strong>A Quick service within 30 Minutes!</strong></p>
+        <p><strong>Visit Fee: ₹99 Only (For Service Booking)</strong></p>
+       
     </section>
 
     <!-- Services Section -->
     <section id="services">
         <h2>Our Services</h2>
         <ul>
-            <li>Laptop & Desktop</li>
-            <li>Mobile Phone</li>
+            <li>Laptop & Desktop Repair</li>
+            <li>Mobile Phone Repair</li>
             <li>TV Repair</li>
             <li>CCTV Repair</li>
         </ul>
         <p><strong>Location:</strong> Ameerpet, Hyderabad, 518641</p>
-        <p><strong>Email:</strong> contact@quickfix.com</p>
+        <p><strong>Email:</strong>  quickfixhyd@gmail.com</p>
     </section>
 
     <!-- About Section -->
     <section id="about">
         <h2>About Us</h2>
-        <p>QuickFix is a leading repair service provider for electronic devices. 
-        We aim to provide fast, reliable, and affordable repair solutions with a team of experienced technicians.</p>
+        <p>QuickFix is a leading repair service provider for electronic devices. We aim to provide fast, reliable, and affordable repair solutions with a team of experienced technicians.</p>
     </section>
 
     
+      
 
     <!-- Contact Section -->
     <section id="contact">
         <h2>Contact Us</h2>
-        <p>Phone: +91 98765 43210</p>
-        <p>Email: support@quickfix.com</p>
-        <p>Address: 123 QuickFix Street, Bengaluru</p>
+        <p><strong>Phone:</strong>  +91 9912352545</p>
+        <p><strong>Email:</strong>  quickfixhyd@gmail.com</p>
+        <p><strong>Address:</strong>  Ameerpet, Hyderabad, 518641</p>
     </section>
 
 </body>

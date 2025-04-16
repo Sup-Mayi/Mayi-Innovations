@@ -5,6 +5,11 @@ from .models import ServiceRequest, ContactMessage
 from .models import BuyNewInquiry
 from django.utils import timezone
 from django.core.exceptions import ValidationError
+from django import forms
+
+class ExcelUploadForm(forms.Form):
+    excel_file = forms.FileField()
+
 
 
 
@@ -64,16 +69,16 @@ class BuyNewInquiryForm(forms.ModelForm):
         widget=forms.DateTimeInput(attrs={'type': 'datetime-local'})
     )
 
-    price = forms.CharField(
-        initial="99/-",
-        required=False,
-        label="Estimated Price",
-        widget=forms.TextInput(attrs={'readonly': 'readonly'})
-    )
+    # # price = forms.CharField(
+    # #     initial="99/-",
+    # #     required=False,
+    # #     label="Estimated Price",
+    # #     widget=forms.TextInput(attrs={'readonly': 'readonly'})
+    # )
 
-    class Meta:
+    class  Meta:
         model = BuyNewInquiry
-        fields = ['device_type', 'name', 'email', 'phone', 'appointment_date', 'price', 'ticket_id']
+        fields = ['device_type', 'name', 'email', 'phone', 'state', 'city' ,'appointment_date', 'ticket_id']
 
 
 
@@ -84,6 +89,10 @@ class BuyNewInquiryForm(forms.ModelForm):
 
     def clean_appointment_date(self):
         date = self.cleaned_data.get('appointment_date')
-        if date and date < timezone.now():
-            raise ValidationError("You cannot select a past date or time.")
-        return date
+        if date:
+        # Make sure both are timezone-aware
+            if timezone.is_naive(date):
+                date = make_aware(date)
+            if date < timezone.now():
+                raise ValidationError("You cannot select a past date or time.")
+        return date   

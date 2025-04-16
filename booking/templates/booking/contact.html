@@ -2,28 +2,112 @@
 <html>
 <head>
     <title>Contact Us - QuickFix</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f2f6fa;
+            padding: 40px;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #333;
+            display: block;
+            margin-bottom: 8px;
+            margin-top: 15px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 16px;
+            background: #f9f9f9;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        button {
+            margin-top: 20px;
+            width: 100%;
+            background-color: #007bff;
+            color: white;
+            padding: 14px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
+
+<div class="container">
     <h1>Contact Us</h1>
 
     <form method="post">
         {% csrf_token %}
-        <label for="id_name">Full Name:</label><br>
-        {{ form.name }}<br><br>
+        <label for="id_name">Full Name:</label>
+        {{ form.name }}
 
-        <label for="id_phone">Phone:</label><br>
-        {{ form.phone }}<br><br>
+        <label for="id_phone">Phone:</label>
+        {{ form.phone }}
 
-        <label for="id_email">Email:</label><br>
-        {{ form.email }}<br><br>
+        <label for="id_email">Email:</label>
+        {{ form.email }}
 
-        <label for="id_message">Message:</label><br>
-        {{ form.message }}<br><br>
+        <label for="id_message">Message:</label>
+        {{ form.message }}
 
         <button type="submit">Submit</button>
     </form>
 
-    <br>
-    <a href="{% url 'home' %}">Back to Home</a>
+    <a href="{% url 'home' %}">← Back to Home</a>
+</div>
+
 </body>
 </html>

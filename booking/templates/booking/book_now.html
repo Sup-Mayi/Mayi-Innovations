@@ -1,16 +1,106 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Book a Service - QuickFx</title>
+    <meta charset="UTF-8">
+    <title>Book a Service - QuickFix</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            background-color: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: #007bff;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-field {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input, select {
+            padding: 12px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .form-field p {
+            font-size: 1rem;
+            color: #333;
+            margin-top: 10px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+                margin: 20px;
+            }
+
+            h1 {
+                font-size: 1.6rem;
+            }
+
+            button {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Service Booking - QuickFx</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <p><strong>Book a Service (For visit only 99/-)</strong></p>
 
-        <button type="submit">submit</button>
-    </form>
+    <div class="container">
+        <h1>Book a Service - QuickFix</h1>
+
+        <form method="post">
+            {% csrf_token %}
+            <!-- Render form fields -->
+            {{ form.as_p }}
+
+            <p><strong>Book a Service (For visit only ₹99/-)</strong></p>
+
+            <!-- Submit Button -->
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
 </body>
 </html>

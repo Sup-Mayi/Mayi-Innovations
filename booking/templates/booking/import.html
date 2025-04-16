@@ -1,0 +1,15 @@
+<!-- booking/templates/booking/import.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Import Excel Data</title>
+</head>
+<body>
+    <h1>Import Excel Data</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload</button>
+    </form>
+</body>
+</html>

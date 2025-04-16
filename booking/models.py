@@ -137,7 +137,7 @@ class BuyNewInquiry(models.Model):
         subject = f"Inquiry {self.ticket_id} Status Changed"
         message = f"Dear {self.name},\n\nYour inquiry (ID: {self.ticket_id}) status has changed.\n\n"
         message += f"Old Status: {old_status.capitalize()}\nNew Status: {self.status.capitalize()}\n\n"
-        # message += f"Device Type: {self.device_type}\nState: {self.state}\nCity: {self.city}\n"
+        message += f"Device Type: {self.device_type}\nState: {self.state}\nCity: {self.city}\n"
         message += f"Phone: {self.phone}\nEmail: {self.email}\n\n"
         message += f"Device Type: {self.device_type}\n"
         message += f"Appointment Date: {self.appointment_date}\n\nThank you for contacting us!"

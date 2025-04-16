@@ -1,11 +1,158 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>About - QuickFix</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            background-color: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #007bff;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 2.2rem;
+        }
+
+        h2 {
+            margin-top: 40px;
+            font-size: 1.8rem;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .mission-vision {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .mv-box {
+            background-color: #eef5ff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .team {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .team-member {
+            background-color: #f2f6fa;
+            padding: 20px;
+            border-radius: 10px;
+            width: 220px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .team-member img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .btn-home {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 12px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .btn-home:hover {
+            background-color: #0056b3;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+                margin: 20px;
+            }
+
+            .team {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>About QuickFix</h1>
-    <p>QuickFix is a leading repair service provider for electronic devices. 
-    We aim to provide fast, reliable, and affordable repair solutions with a team of experienced technicians.</p>
+
+    <div class="container">
+        <h1>About QuickFix</h1>
+        <p>
+            QuickFix is a leading repair service provider for electronic devices. We aim to provide fast, reliable, and affordable repair solutions with a team of experienced technicians. Whether it's your mobile phone, laptop, TV, or CCTV system, we ensure top-notch service with genuine parts and timely support.
+        </p>
+
+        <!-- Mission & Vision -->
+        <h2>Our Mission & Vision</h2>
+        <div class="mission-vision">
+            <div class="mv-box">
+                <strong>Mission:</strong>
+                <p>To deliver fast, affordable, and trustworthy device repair services that customers can rely on.</p>
+            </div>
+            <div class="mv-box">
+                <strong>Vision:</strong>
+                <p>To become the most preferred and reliable tech repair brand in India through quality service and customer satisfaction.</p>
+            </div>
+        </div>
+
+        <!-- Our Team -->
+        <h2>Meet Our Team</h2>
+        <div class="team">
+            <div class="team-member">
+                <img src="https://via.placeholder.com/80" alt="Team Member">
+                <h4>Raja mekala</h4>
+                <p>Founder & CEO</p>
+            </div>
+            <div class="team-member">
+                <img src="https://via.placeholder.com/80" alt="Team Member">
+                <h4>sivananda reddy</h4>
+                <p>Lead Technician</p>
+            </div>
+            <div class="team-member">
+                <img src="https://via.placeholder.com/80" alt="Team Member">
+                <h4>customer support</h4>
+                <p>Customer Support</p>
+            </div>
+        </div>
+
+        <!-- Back Button -->
+        <div style="text-align:center;">
+            <a class="btn-home" href="{% url 'home' %}">← Back to Home</a>
+        </div>
+    </div>
+
 </body>
 </html>
